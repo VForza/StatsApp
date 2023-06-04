@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StatsApp.Data;
@@ -9,9 +10,10 @@ using StatsApp.Data;
 namespace StatsApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class StatsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230604115912_beta")]
+    partial class beta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

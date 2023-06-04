@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.VisualBasic;
 using StatsApp.Data.Dtos;
 using StatsApp.Data.Models;
 using System;
@@ -18,12 +19,21 @@ namespace StatsApp.Data.Mapper
 
         public static StatsResponseDto ModelToResponse(Statistics model)
         {
-            decimal? cpc = (model.Cost / model.Clicks);
-            decimal? cpm = (model.Cost / model.Views);
+            String date = model.Date.ToString("yyyy-MM-dd");
+            decimal? cost = ParseValue(model.Cost);
+            decimal? cpc = ParseValue(model.Cpc);
+            decimal? cpm = ParseValue(model.Cpm);
+
             return new StatsResponseDto 
             {
-                Date = model.Date, Views = model.Views, Clicks = model.Clicks, Cost = model.Cost, Cpc = cpc, Cpm = cpm
+                Date = date, Views = model.Views, Clicks = model.Clicks, Cost = cost, Cpc = cpc, Cpm = cpm
             };
+        }
+
+        private static decimal? ParseValue(decimal? value)
+        {
+            if (value != null) value = Math.Round((decimal)value, 2);
+            return value;
         }
     }
 }

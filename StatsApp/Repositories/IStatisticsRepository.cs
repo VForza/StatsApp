@@ -1,5 +1,5 @@
-﻿using StatsApp.Data.Dtos;
-using StatsApp.Data.Models;
+﻿using StatsApp.Data.Models;
+using StatsApp.Dtos;
 using System;
 using System.Collections.Generic;
 

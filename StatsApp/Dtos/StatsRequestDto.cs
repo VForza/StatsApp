@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System;
 
-namespace StatsApp.Data.Dtos
+namespace StatsApp.Dtos
 {
     public class StatsRequestDto
     {
