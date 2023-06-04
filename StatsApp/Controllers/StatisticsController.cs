@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StatsApp.Data.Mapper;
 using StatsApp.Data.Models;
 using StatsApp.Dtos;
+using StatsApp.Mappers;
 using StatsApp.Repositories;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,6 @@ namespace StatsApp.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<List<StatsResponseDto>>> getAllByDate(DateTime from, DateTime to)
         {
-            //List<StatsResponseDto> stats = (List<StatsResponseDto>)_repo.GetAllByDate(from, to);
             return Ok(_repo.GetAllByDate(from, to));
         }
 
@@ -47,7 +46,7 @@ namespace StatsApp.Controllers
         public ActionResult<Statistics> addStatistics(StatsRequestDto stat) 
         {
             _repo.Create(stat);
-            return Created("~/" , stat);
+            return Ok();
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic;
-using StatsApp.Data.Dtos;
 using StatsApp.Data.Models;
+using StatsApp.Dtos;
 using System;
 using System.Threading;
 
-namespace StatsApp.Data.Mapper
+namespace StatsApp.Mappers
 {
     public class StatsMapper
     {
-        public static Statistics ReqToModel(StatsRequestDto dto)
+        public static Statistics RequestToModel(StatsRequestDto dto)
         {
             return new Statistics 
             {
@@ -20,9 +20,9 @@ namespace StatsApp.Data.Mapper
         public static StatsResponseDto ModelToResponse(Statistics model)
         {
             String date = model.Date.ToString("yyyy-MM-dd");
-            decimal? cost = ParseValue(model.Cost);
-            decimal? cpc = ParseValue(model.Cpc);
-            decimal? cpm = ParseValue(model.Cpm);
+            decimal? cost = RoundValue(model.Cost);
+            decimal? cpc = RoundValue(model.Cpc);
+            decimal? cpm = RoundValue(model.Cpm);
 
             return new StatsResponseDto 
             {
@@ -30,7 +30,7 @@ namespace StatsApp.Data.Mapper
             };
         }
 
-        private static decimal? ParseValue(decimal? value)
+        private static decimal? RoundValue(decimal? value)
         {
             if (value != null) value = Math.Round((decimal)value, 2);
             return value;

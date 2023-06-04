@@ -2,7 +2,7 @@
 using StatsApp.Data;
 using StatsApp.Data.Models;
 using StatsApp.Dtos;
-using StatsApp.Mapper;
+using StatsApp.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,6 @@ namespace StatsApp.Repositories
                     select StatsMapper.ModelToResponse(s)).ToList();
         }
 
-
         //test method
         public Statistics GetByDate(DateTime requestDate)
         {
@@ -39,7 +38,7 @@ namespace StatsApp.Repositories
         //done
         public void Create(StatsRequestDto stat)
         {
-            Statistics statistics = StatsMapper.ReqToModel(stat);
+            Statistics statistics = StatsMapper.RequestToModel(stat);
             _context.Statistics.Add(statistics);
             _context.SaveChanges();
         }
@@ -55,7 +54,5 @@ namespace StatsApp.Repositories
         {
             _context.Database.ExecuteSqlRaw("TRUNCATE TABLE Statistics");
         }
-
-       
     }
 }
