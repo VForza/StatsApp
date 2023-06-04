@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StatsApp.Data;
-using StatsApp.Data.Dtos;
-using StatsApp.Data.Mapper;
 using StatsApp.Data.Models;
+using StatsApp.Dtos;
+using StatsApp.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +24,8 @@ namespace StatsApp.Repositories
                 .Where(s => s.Date.Date >= from.Date && s.Date.Date <= to.Date)
                 .OrderBy(s => s.Date)
                 .ToList();
-            List<StatsResponseDto> result = new List<StatsResponseDto>();
-            foreach(Statistics s in stats)
-            {
-                result.Add(StatsMapper.ModelToResponse(s));
-            }
-            return result;
+            return (from Statistics s in stats
+                    select StatsMapper.ModelToResponse(s)).ToList();
         }
 
 

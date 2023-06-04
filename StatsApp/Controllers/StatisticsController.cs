@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StatsApp.Data.Dtos;
 using StatsApp.Data.Mapper;
 using StatsApp.Data.Models;
+using StatsApp.Dtos;
 using StatsApp.Repositories;
 using System;
 using System.Collections.Generic;
