@@ -13,20 +13,16 @@ namespace StatsApp.Data.Models
         public DateTime Date { get; set; }
         public int? Views { get; set; }
         public int? Clicks { get; set; }
-        [Column(TypeName = "decimal(15,2)")]
         public decimal? Cost { get; set; }
-        [Column(TypeName = "decimal(15,2)")]
         public decimal? Cpc
         {
             get { return Cost / Clicks; }
             set { }
         }
-        [Column(TypeName = "decimal(15,2)")]
         public decimal? Cpm
         {
             get { return Cost / Views * 1000; }
             set { }
-
         }
     }
 }
