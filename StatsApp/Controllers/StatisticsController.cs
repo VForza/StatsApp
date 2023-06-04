@@ -35,18 +35,18 @@ namespace StatsApp.Controllers
             return Ok(_repo.GetAllByDate(from, to));
         }
 
-        [HttpDelete]
-        public ActionResult DeleteAll() 
-        {
-            _repo.DeleteAll();
-            return NoContent();
-        }
-
         [HttpPost]
         public ActionResult<Statistics> addStatistics(StatsRequestDto stat) 
         {
             _repo.Create(stat);
             return Ok();
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteAll()
+        {
+            _repo.DeleteAll();
+            return NoContent();
         }
     }
 }

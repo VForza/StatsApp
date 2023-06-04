@@ -32,7 +32,7 @@ namespace StatsApp.Mappers
 
         private static decimal? RoundValue(decimal? value)
         {
-            if (value != null) value = Math.Round((decimal)value, 2);
+            if (value != null) value = Math.Ceiling((decimal)value * 100) / 100;
             return value;
         }
     }
