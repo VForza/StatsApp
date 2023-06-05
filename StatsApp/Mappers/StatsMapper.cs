@@ -1,9 +1,6 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.VisualBasic;
-using StatsApp.Data.Models;
+﻿using StatsApp.Data.Models;
 using StatsApp.Dtos;
 using System;
-using System.Threading;
 
 namespace StatsApp.Mappers
 {
@@ -11,9 +8,12 @@ namespace StatsApp.Mappers
     {
         public static Statistics RequestToModel(StatsRequestDto dto)
         {
-            return new Statistics 
+            return new Statistics
             {
-                Date = dto.Date, Views = dto.Views, Clicks = dto.Clicks, Cost = dto.Cost
+                Date = dto.Date,
+                Views = dto.Views,
+                Clicks = dto.Clicks,
+                Cost = dto.Cost
             };
         }
 
@@ -24,9 +24,14 @@ namespace StatsApp.Mappers
             decimal? cpc = RoundValue(model.Cpc);
             decimal? cpm = RoundValue(model.Cpm);
 
-            return new StatsResponseDto 
+            return new StatsResponseDto
             {
-                Date = date, Views = model.Views, Clicks = model.Clicks, Cost = cost, Cpc = cpc, Cpm = cpm
+                Date = date,
+                Views = model.Views,
+                Clicks = model.Clicks,
+                Cost = cost,
+                Cpc = cpc,
+                Cpm = cpm
             };
         }
 

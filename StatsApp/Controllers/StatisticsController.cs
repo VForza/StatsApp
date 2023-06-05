@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StatsApp.Data.Models;
 using StatsApp.Dtos;
-using StatsApp.Mappers;
 using StatsApp.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StatsApp.Controllers
 {
@@ -16,27 +13,27 @@ namespace StatsApp.Controllers
     {
         private readonly IStatisticsRepository _repo;
 
-        public StatisticsController(IStatisticsRepository repo) 
+        public StatisticsController(IStatisticsRepository repo)
         {
             _repo = repo;
         }
 
         //test method
         [HttpGet("{date}")]
-        public ActionResult<Statistics> getByDate(DateTime date)
+        public ActionResult<Statistics> GetByDate(DateTime date)
         {
             Statistics stat = _repo.GetByDate(date);
             return Ok(stat);
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<List<StatsResponseDto>>> getAllByDate(DateTime from, DateTime to)
+        public ActionResult<List<StatsResponseDto>> GetAllByDate(DateTime from, DateTime to)
         {
             return Ok(_repo.GetAllByDate(from, to));
         }
 
         [HttpPost]
-        public ActionResult<Statistics> addStatistics(StatsRequestDto stat) 
+        public ActionResult<Statistics> AddStatistics(StatsRequestDto stat)
         {
             _repo.Create(stat);
             return Ok();

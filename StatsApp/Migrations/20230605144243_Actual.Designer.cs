@@ -10,8 +10,8 @@ using StatsApp.Data;
 namespace StatsApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230604115912_beta")]
-    partial class beta
+    [Migration("20230605144243_Actual")]
+    partial class Actual
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,15 +34,15 @@ namespace StatsApp.Migrations
                         .HasColumnName("clicks");
 
                     b.Property<decimal?>("Cost")
-                        .HasColumnType("numeric(15,2)")
+                        .HasColumnType("numeric")
                         .HasColumnName("cost");
 
                     b.Property<decimal?>("Cpc")
-                        .HasColumnType("numeric(15,2)")
+                        .HasColumnType("numeric")
                         .HasColumnName("cpc");
 
                     b.Property<decimal?>("Cpm")
-                        .HasColumnType("numeric(15,2)")
+                        .HasColumnType("numeric")
                         .HasColumnName("cpm");
 
                     b.Property<DateTime>("Date")

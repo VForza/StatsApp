@@ -1,18 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using StatsApp.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using StatsApp.Repositories;
 
 namespace StatsApp
@@ -35,7 +29,7 @@ namespace StatsApp
 
             services.AddControllers();
             services.AddScoped<IStatisticsRepository, StatisticsRepository>();
-            services.AddDbContext<AppDbContext>(options => 
+            services.AddDbContext<AppDbContext>(options =>
                 options
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnectionString"))
                     .UseSnakeCaseNamingConvention()
@@ -56,17 +50,15 @@ namespace StatsApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => {
+                app.UseSwaggerUI(c =>
+                {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "StatsApp v1");
-                   // c.RoutePrefix = "";
                 });
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

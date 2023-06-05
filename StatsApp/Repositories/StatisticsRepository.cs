@@ -13,7 +13,7 @@ namespace StatsApp.Repositories
     {
         private readonly AppDbContext _context;
 
-        public StatisticsRepository(AppDbContext context) 
+        public StatisticsRepository(AppDbContext context)
         {
             _context = context;
         }
