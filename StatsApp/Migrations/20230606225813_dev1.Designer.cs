@@ -3,14 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StatsApp.Data;
 
 namespace StatsApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230606153715_Actual")]
-    partial class Actual
+    [Migration("20230606225813_dev1")]
+    partial class dev1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
