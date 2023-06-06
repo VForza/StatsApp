@@ -35,7 +35,6 @@ namespace StatsApp.Repositories
             return _context.Statistics.FirstOrDefault(x => x.Date == date);
         }
 
-        //done
         public void Create(StatsRequestDto stat)
         {
             Statistics statistics = StatsMapper.RequestToModel(stat);
@@ -43,13 +42,6 @@ namespace StatsApp.Repositories
             _context.SaveChanges();
         }
 
-        //should it be implemented?
-        public void Update(StatsRequestDto stat)
-        {
-            throw new NotImplementedException();
-        }
-
-        //done
         public void DeleteAll()
         {
             _context.Database.ExecuteSqlRaw("TRUNCATE TABLE Statistics");

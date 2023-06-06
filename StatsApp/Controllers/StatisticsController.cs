@@ -29,6 +29,10 @@ namespace StatsApp.Controllers
         [HttpGet]
         public ActionResult<List<StatsResponseDto>> GetAllByDate(DateTime from, DateTime to)
         {
+            if (to < from)
+            {
+                return BadRequest("Wrong date range: date \"to\" must be later than \"from\" ");
+            }
             return Ok(_repo.GetAllByDate(from, to));
         }
 

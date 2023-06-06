@@ -10,7 +10,6 @@ namespace StatsApp.Repositories
         IEnumerable<StatsResponseDto> GetAllByDate(DateTime from, DateTime to);
         Statistics GetByDate(DateTime date);
         void Create(StatsRequestDto stat);
-        void Update(StatsRequestDto stat);
         void DeleteAll();
     }
 }

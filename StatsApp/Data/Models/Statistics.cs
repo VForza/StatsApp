@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace StatsApp.Data.Models
@@ -15,12 +16,32 @@ namespace StatsApp.Data.Models
         public decimal? Cost { get; set; }
         public decimal? Cpc
         {
-            get { return Cost / Clicks; }
+            get
+            {
+                if (Clicks != 0)
+                {
+                    return Cost / Clicks;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
             set { }
         }
         public decimal? Cpm
         {
-            get { return Cost / Views * 1000; }
+            get
+            {
+                if (Views != 0)
+                {
+                    return Cost / Views * 1000;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
             set { }
         }
     }
