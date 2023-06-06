@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using StatsApp.Data;
 using StatsApp.Repositories;
+using StatsApp.Services;
 
 namespace StatsApp
 {
@@ -29,6 +30,7 @@ namespace StatsApp
 
             services.AddControllers();
             services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
             services.AddDbContext<AppDbContext>(options =>
                 options
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnectionString"))

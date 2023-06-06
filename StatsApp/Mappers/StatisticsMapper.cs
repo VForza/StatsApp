@@ -4,9 +4,9 @@ using System;
 
 namespace StatsApp.Mappers
 {
-    public class StatsMapper
+    public class StatisticsMapper
     {
-        public static Statistics RequestToModel(StatsRequestDto dto)
+        public static Statistics RequestToModel(StatisticsRequestDto dto)
         {
             return new Statistics
             {
@@ -17,7 +17,7 @@ namespace StatsApp.Mappers
             };
         }
 
-        public static StatsResponseDto ModelToResponse(Statistics model)
+        public static StatisticsResponseDto ModelToResponse(Statistics model)
         {
             String date = model.Date.ToString("yyyy-MM-dd");
             int? views = MapNullToZero(model.Views);
@@ -26,7 +26,7 @@ namespace StatsApp.Mappers
             decimal? cpc = RoundValue(model.Cpc);
             decimal? cpm = RoundValue(model.Cpm);
 
-            return new StatsResponseDto
+            return new StatisticsResponseDto
             {
                 Date = date,
                 Views = views,
@@ -37,15 +37,21 @@ namespace StatsApp.Mappers
             };
         }
 
+        public static StatisticsResponseDto RequestToResponse(StatisticsRequestDto dto)
+        {
+            return ModelToResponse(RequestToModel(dto));
+        }
+
+
         private static decimal? RoundValue(decimal? value)
         {
-         return value.HasValue ? Math.Ceiling((decimal)value * 100) / 100 :0;
+            return value.HasValue ? Math.Ceiling((decimal)value * 100) / 100 : 0;
         }
 
         private static int? MapNullToZero(int? value)
         {
             return value.HasValue ? value : 0;
-        } 
+        }
     }
 }
 

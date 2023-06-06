@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatsApp.Dtos
 {
-    public class StatsRequestDto
+    public class StatisticsRequestDto
     {
         [Required(ErrorMessage = "Date is a required field")]
         [DataType(DataType.Date)]
