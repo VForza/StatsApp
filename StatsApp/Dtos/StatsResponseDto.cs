@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace StatsApp.Dtos
+﻿namespace StatsApp.Dtos
 {
     public class StatsResponseDto
     {
@@ -13,6 +8,5 @@ namespace StatsApp.Dtos
         public decimal? Cost { get; set; }
         public decimal? Cpc { get; set; }
         public decimal? Cpm { get; set; }
-
     }
 }

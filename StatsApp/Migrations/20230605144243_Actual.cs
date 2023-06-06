@@ -2,7 +2,7 @@
 
 namespace StatsApp.Migrations
 {
-    public partial class initDB2 : Migration
+    public partial class Actual : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
