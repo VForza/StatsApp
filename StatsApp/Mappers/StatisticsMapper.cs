@@ -54,14 +54,3 @@ namespace StatsApp.Mappers
         }
     }
 }
-
-
-//if (value != null)
-//{
-//    value = Math.Ceiling((decimal)value * 100) / 100;
-//    return value;
-//}
-//else
-//{
-//    return 0;
-//}

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 namespace StatsApp.Migrations
 {
-    public partial class Actual : Migration
+    public partial class dev1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace StatsApp.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    date = table.Column<DateTime>(type: "date", nullable: false),
                     views = table.Column<int>(type: "integer", nullable: true),
                     clicks = table.Column<int>(type: "integer", nullable: true),
                     cost = table.Column<decimal>(type: "numeric", nullable: true),
