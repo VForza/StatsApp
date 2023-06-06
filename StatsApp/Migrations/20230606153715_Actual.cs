@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 namespace StatsApp.Migrations
 {
@@ -14,10 +14,12 @@ namespace StatsApp.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    date = table.Column<DateTime>(type: "date", nullable: false),
-                    views = table.Column<long>(type: "bigint", nullable: true),
-                    clicks = table.Column<long>(type: "bigint", nullable: true),
-                    cost = table.Column<decimal>(type: "numeric(4,2)", nullable: true)
+                    date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    views = table.Column<int>(type: "integer", nullable: true),
+                    clicks = table.Column<int>(type: "integer", nullable: true),
+                    cost = table.Column<decimal>(type: "numeric", nullable: true),
+                    cpc = table.Column<decimal>(type: "numeric", nullable: true),
+                    cpm = table.Column<decimal>(type: "numeric", nullable: true)
                 },
                 constraints: table =>
                 {
